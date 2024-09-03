@@ -5,6 +5,11 @@
 - Build Header
 - Build Login Form
 - Build SignUp Form
+- Error Page and Routing
+- Form Validation
+- useRef Hook
+- Building Authentication
+- Google firebase for authentication
 
 # Features
 

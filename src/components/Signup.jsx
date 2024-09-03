@@ -1,10 +1,26 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { checkValidateData } from "../utils/validate";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const email = useRef("");
+  const password = useRef("");
+  const name = useRef("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSignupButtonClick = () => {
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    const nameValue = name.current.value;
+
+    const message = checkValidateData({
+      email: emailValue,
+      password: passwordValue,
+      name: nameValue,
+    });
+    setErrorMessage(message);
+  };
+
   const navigate = useNavigate();
   return (
     <div className="relative min-h-screen flex items-center justify-center">
@@ -24,34 +40,38 @@ const Signup = () => {
           shows and more
         </h1>
         <p className="text-xl mb-4">Ready to watch? Enter your details!!</p>
-        <form className="flex flex-col gap-4 max-w-md mx-auto">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col gap-4 max-w-md mx-auto"
+        >
           <input
             type="text"
+            ref={name}
             placeholder="User Full Name"
             className="flex-grow p-3 text-base text-white bg-black bg-opacity-50 border border-gray-600 rounded placeholder-gray-400 focus:outline-none focus:border-white"
-            value={name}
             required
-            onChange={(e) => setName(e.target.value)}
           />
           <input
             type="email"
+            ref={email}
             placeholder="Email address"
             className="flex-grow p-3 text-base text-white bg-black bg-opacity-50 border border-gray-600 rounded placeholder-gray-400 focus:outline-none focus:border-white"
-            value={email}
             required
-            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
+            ref={password}
             placeholder="Password"
             className="flex-grow p-3 text-base text-white bg-black bg-opacity-50 border border-gray-600 rounded placeholder-gray-400 focus:outline-none focus:border-white"
-            value={password}
             required
-            onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-red-600 hover:bg-red-700 py-3 px-6 rounded text-xl font-semibold">
+          <button
+            onClick={handleSignupButtonClick}
+            className="bg-red-600 hover:bg-red-700 py-3 px-6 rounded text-xl font-semibold"
+          >
             Get Started <span className="ml-2">&gt;</span>
           </button>
+          <p className="text-red-600 font-bold text-lg mb-2">{errorMessage}</p>
           <div className="flex items-center my-4">
             <p className="px-2">Already Loving Netflix GPT?? </p>
             <button onClick={() => navigate("/")} className="hover:underline">

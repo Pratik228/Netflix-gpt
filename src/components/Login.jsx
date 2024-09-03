@@ -1,12 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { checkValidateData } from "../utils/validate";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const email = useRef(null);
+  const password = useRef(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = () => {};
+  const handleButtonClick = () => {
+    //validate the form data
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    const message = checkValidateData({ email : emailValue, password : passwordValue });
+    setErrorMessage(message);
+
+    // Now we can do signin
+  };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
@@ -20,31 +30,32 @@ const Login = () => {
       </div>
 
       {/* Login Form */}
-      <form className="relative z-10 bg-black bg-opacity-60 p-10 rounded-lg text-white w-full max-w-md">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="relative z-10 bg-black bg-opacity-60 p-10 rounded-lg text-white w-full max-w-md"
+      >
         <h2 className="text-3xl font-bold mb-6">Sign In</h2>
         <input
           type="text"
+          ref={email}
           placeholder="Email or Mobile Number"
           className="w-full p-3 mb-4 bg-gray-700 rounded"
-          value={email}
           required
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
         />
         <input
           type="password"
+          ref={password}
           placeholder="Password"
           className="w-full p-3 mb-6 bg-gray-700 rounded"
-          value={password}
           required
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+          // onChange={(e) => {
+          //   setPassword(e.target.value);
+          // }}
         />
+
         <button
           className="w-full bg-red-600 p-3 hover:bg-red-500 rounded font-bold mb-4"
-          onSubmit={handleSubmit}
+          onClick={handleButtonClick}
         >
           Sign In
         </button>
@@ -56,14 +67,15 @@ const Login = () => {
         <button className="w-full bg-gray-700 p-3 rounded font-bold mb-4">
           Use a sign in code
         </button>
+        <p className="text-red-600 font-bold text-lg mb-4">{errorMessage}</p>
         <Link to="#" className="text-gray-400 hover:underline mb-4">
           Forgot Password?
         </Link>
-        <div className="flex items-center my-4">
-          <p className="px-2">New to Netflix GPT? </p>
+        <div className="flex items-center mt-6">
+          <p className="text-gray-400">New to Netflix GPT? </p>
           <button
             onClick={() => navigate("/signup")}
-            className="hover:underline"
+            className="hover:underline ml-2"
           >
             Sign up now
           </button>
