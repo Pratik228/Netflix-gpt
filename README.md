@@ -2,6 +2,9 @@
 
 - Create react using vite
 - Added tailwindCSS
+- Build Header
+- Build Login Form
+- Build SignUp Form
 
 # Features
 
