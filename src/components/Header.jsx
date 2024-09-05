@@ -1,12 +1,9 @@
 import logo from "../assets/logo.webp";
+
 const Header = () => {
   return (
-    <div className="relative z-50">
-      <img
-        src={logo}
-        alt="logo"
-        className="absolute top-4 left-52 w-40 h-auto bg-gradient-to-t from-black"
-      />
+    <div className="absolute top-0 left-0 w-full z-50">
+      <img src={logo} alt="logo" className="w-32 h-auto m-4" />
     </div>
   );
 };

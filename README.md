@@ -10,6 +10,13 @@
 - useRef Hook
 - Building Authentication
 - Google firebase for authentication
+- Deploying to production
+- Create Signup
+- Implement Sign in using the firebase auth
+- Created redux store with userSlice
+- Created browse page header
+- Implemented signout and added photos and validation
+- update profile
 
 # Features
 
