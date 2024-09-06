@@ -11,6 +11,7 @@ import Header from "./Header";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { backgroundImage, avatar } from "../constants/constants";
+import { SAMPLE_EMAIL, SAMPLE_PASSWORD } from "../constants/constants";
 
 const AuthForm = () => {
   const navigate = useNavigate();
@@ -24,7 +25,10 @@ const AuthForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleQuickLogin = () => {
-    navigate("/browse");
+    if (email.current && password.current) {
+      email.current.value = SAMPLE_EMAIL;
+      password.current.value = SAMPLE_PASSWORD;
+    }
   };
 
   const handleSubmit = () => {
@@ -98,7 +102,7 @@ const AuthForm = () => {
               className="w-1/2 bg-gray-600 p-3 hover:bg-green-500 rounded font-bold mb-4"
               onClick={handleQuickLogin}
             >
-              Quick Login
+              Quick Login!!
             </button>
             <input
               type="email"

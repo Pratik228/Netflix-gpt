@@ -21,6 +21,13 @@
 - unmounting or unsubscribing to onAuthStateChange callback
 - Removed login and signup component and kept it into one AuthForm as to avoid code repetition
 - Also removed BrowseHeader and kept only the header component
+- Register RMDP API and create an app and get access token
+- Get data from TMDB to our browse page
+- Created custom hook for playing movies
+- MovieSlice and update store with movies Data
+- Fetch Data from trailer video
+- update stoere with trailer data
+- Embedded Youtube video for the background
 
 # Features
 

@@ -1,17 +1,16 @@
 import Header from "./Header";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
+  useNowPlayingMovies();
+
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="relative">
       <Header />
-      <div className="pt-16">
-        {" "}
-        {/* Add padding-top to account for fixed header */}
-        <div className="w-full h-[56.25vw] bg-cover bg-center">
-          {/* Content for the main featured content */}
-        </div>
-        {/* Rest of your browse content */}
-      </div>
+      <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };

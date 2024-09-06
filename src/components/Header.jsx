@@ -52,7 +52,7 @@ const Header = () => {
         isBrowse ? "bg-gradient-to-b from-black" : ""
       }`}
     >
-      <div className="flex items-center justify-between px-4 py-2">
+      <div className="flex items-center justify-between px-4 ">
         <img src={logo} alt="Netflix" className="w-32 h-auto" />
         {isBrowse && (
           <>
