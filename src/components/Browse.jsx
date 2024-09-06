@@ -1,9 +1,9 @@
-import BrowseHeader from "./BrowseHeader";
+import Header from "./Header";
 
 const Browse = () => {
   return (
     <div className="min-h-screen bg-black text-white">
-      <BrowseHeader />
+      <Header />
       <div className="pt-16">
         {" "}
         {/* Add padding-top to account for fixed header */}

@@ -19,6 +19,8 @@
 - update profile
 - if user is not logged in then don't allow the user to log in to the browse page
 - unmounting or unsubscribing to onAuthStateChange callback
+- Removed login and signup component and kept it into one AuthForm as to avoid code repetition
+- Also removed BrowseHeader and kept only the header component
 
 # Features
 
