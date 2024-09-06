@@ -6,11 +6,15 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { NORMAL_IMG } from "../constants/constants";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
 
 const BrowseHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
   const handleToggleLogout = () => {
@@ -25,11 +29,31 @@ const BrowseHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
       })
       .catch((error) => {
         // An error happened.
@@ -61,7 +85,7 @@ const BrowseHeader = () => {
           </ul>
         </nav>
         <div className="flex items-center space-x-4 text-white">
-          <span className="cursor-pointer">{user.displayName}</span>
+          <span className="cursor-pointer">{user?.displayName}</span>
           <div className="relative">
             <button onClick={handleToggleLogout} className="flex items-center">
               <img

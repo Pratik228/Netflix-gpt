@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { checkValidateData } from "../utils/validate";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Header from "./Header";
+import { backgroundImage } from "../constants/constants";
 import { auth } from "../utils/firebase";
 
 const Login = () => {
@@ -33,7 +34,6 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        navigate("/browse");
         // ...
       })
       .catch((error) => {
@@ -53,7 +53,7 @@ const Login = () => {
       <div className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://staticg.sportskeeda.com/editor/2024/08/907c1-17231340015999-1920.jpg"
+            src={backgroundImage}
             alt="background"
             className="w-full h-full object-cover"
           />

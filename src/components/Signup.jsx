@@ -6,6 +6,8 @@ import { auth } from "../utils/firebase";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { backgroundImage } from "../constants/constants";
+import { avatar } from "../constants/constants";
 
 const Signup = () => {
   const email = useRef("");
@@ -35,7 +37,7 @@ const Signup = () => {
         const user = userCredential.user;
         updateProfile(user, {
           displayName: nameValue,
-          photoURL: "https://avatars.githubusercontent.com/u/58130071?v=4",
+          photoURL: { avatar },
         })
           .then(() => {
             // Profile updated!
@@ -57,7 +59,6 @@ const Signup = () => {
             // ...
           });
         console.log(user);
-        navigate("/");
         // ...
       })
       .catch((error) => {
@@ -77,7 +78,7 @@ const Signup = () => {
       <div className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://staticg.sportskeeda.com/editor/2024/08/907c1-17231340015999-1920.jpg"
+            src={backgroundImage}
             alt="background"
             className="w-full h-full object-cover"
           />

@@ -17,6 +17,8 @@
 - Created browse page header
 - Implemented signout and added photos and validation
 - update profile
+- if user is not logged in then don't allow the user to log in to the browse page
+- unmounting or unsubscribing to onAuthStateChange callback
 
 # Features
 
