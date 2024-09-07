@@ -17,3 +17,12 @@ export const API_OPTIONS = {
 
 export const SAMPLE_EMAIL = "pratik3@gmail.com";
 export const SAMPLE_PASSWORD = "Pra1234@";
+
+export const CDN_URL = "https://image.tmdb.org/t/p/w500";
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "german", name: "German" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "punjabi", name: "Punjabi" },
+];

@@ -6,8 +6,10 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 import logo from "../assets/logo.webp";
 import { NORMAL_IMG } from "../constants/constants";
+import { SUPPORTED_LANGUAGES } from "../constants/constants";
+import { changeLanguage } from "../utils/configSlice";
 
-const Header = () => {
+const Header = ({ onNavChange }) => {
   const [showLogout, setShowLogout] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,6 +18,9 @@ const Header = () => {
 
   const isBrowse = location.pathname === "/browse";
 
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -41,7 +46,6 @@ const Header = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log("Error Signing out the user!!", error);
         navigate("/error");
       });
   };
@@ -58,19 +62,45 @@ const Header = () => {
           <>
             <nav>
               <ul className="flex space-x-4 text-white">
-                <li className="cursor-pointer hover:text-gray-300">Home</li>
-                <li className="cursor-pointer hover:text-gray-300">TV Shows</li>
-                <li className="cursor-pointer hover:text-gray-300">Movies</li>
-                <li className="cursor-pointer hover:text-gray-300">
-                  New & Popular
+                <li
+                  onClick={() => onNavChange("home")}
+                  className="cursor-pointer hover:text-gray-300"
+                >
+                  Home
+                </li>
+                <li
+                  onClick={() => onNavChange("tvShows")}
+                  className="cursor-pointer hover:text-gray-300"
+                >
+                  TV Shows
+                </li>
+                <li
+                  onClick={() => onNavChange("movies")}
+                  className="cursor-pointer hover:text-gray-300"
+                >
+                  Movies
                 </li>
                 <li className="cursor-pointer hover:text-gray-300">My List</li>
-                <li className="cursor-pointer hover:text-gray-300">
-                  Browse by Languages
+
+                <li
+                  onClick={() => onNavChange("GPT")}
+                  className="cursor-pointer bg-red-500 border rounded-xl p-1 hover:text-black"
+                >
+                  GPT Search
                 </li>
               </ul>
             </nav>
             <div className="flex items-center space-x-4 text-white">
+              <select
+                className="bg-transparent text-white"
+                onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
               <span className="cursor-pointer">{user?.displayName}</span>
               <div className="relative">
                 <button

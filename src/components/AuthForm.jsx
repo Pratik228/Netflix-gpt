@@ -50,7 +50,6 @@ const AuthForm = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
         })
         .catch((error) => {
           if (error.message.includes("auth/invalid-credential")) {

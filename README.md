@@ -28,6 +28,15 @@
 - Fetch Data from trailer video
 - update stoere with trailer data
 - Embedded Youtube video for the background
+- Build Secondary Component after the video playback
+- Added the cards feature with different movie list
+- added cool TailwindCSS
+- added ContentDisplay component which will render according to the navbar
+- Added more content like popular tv shows, popular movies and made a separate grid for those
+- GPT Search feature
+- GPT search page and search bar
+- Added Multilingual search
+- Integrate GPT API
 
 # Features
 
