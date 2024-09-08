@@ -27,4 +27,4 @@ dist-ssr
 .github/
 build/
 
-
+.env

@@ -1,4 +1,4 @@
-import MovieCard from "./MovieCard";
+import EnhancedMovieCard from "./EnhancedMovieCard";
 
 const MovieList = ({ title, movies }) => {
   if (!movies || movies.length === 0) {
@@ -17,7 +17,7 @@ const MovieList = ({ title, movies }) => {
                 key={movie.id}
                 className="pr-2 transition-all duration-200 ease-in hover:scale-125 hover:z-10"
               >
-                <MovieCard posterPath={movie.poster_path} title={movie.title} />
+                <EnhancedMovieCard key={movie.id} movie={movie} />
               </div>
             ))}
           </div>

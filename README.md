@@ -37,6 +37,10 @@
 - GPT search page and search bar
 - Added Multilingual search
 - Integrate GPT API
+- Added gpt data in redux store, added shimmer while searching
+- Integrated openAI to the project to search movies and show us all
+- Added the wishlist and liked feature using Higher order component
+- Made responsive and added play button to play the trailer
 
 # Features
 

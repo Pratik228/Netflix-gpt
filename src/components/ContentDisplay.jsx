@@ -3,6 +3,7 @@ import MovieGrid from "./MovieGrid";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import GptSearch from "./GptSearch";
+import { backgroundImage } from "../constants/constants";
 
 const ContentDisplay = ({ activeContent }) => {
   const allMovies = useSelector((store) => store.movies);
@@ -11,10 +12,12 @@ const ContentDisplay = ({ activeContent }) => {
     switch (activeContent) {
       case "home":
         return (
-          <>
+          <div className="relative">
             <MainContainer />
-            <SecondaryContainer />
-          </>
+            <div className="relative z-20 bg-black">
+              <SecondaryContainer />
+            </div>
+          </div>
         );
       case "tvShows":
         return (
@@ -35,12 +38,29 @@ const ContentDisplay = ({ activeContent }) => {
 
       case "GPT":
         return (
+          <div className="relative min-h-screen">
+            <div className="fixed inset-0">
+              <img
+                src={backgroundImage}
+                alt="background"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black opacity-60"></div>
+            </div>
+            <div className="relative z-10 pt-32 px-4">
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Welcome to GPT Search
+              </h2>
+              <GptSearch />
+            </div>
+          </div>
+        );
+
+      case "watchlist":
+        return (
           <div className="pt-32 px-8 bg-black min-h-screen">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {" "}
-              Welcome to GPT Search
-            </h2>
-            <GptSearch />
+            <h2 className="text-3xl font-bold text-white mb-6">Movies</h2>
+            <MovieGrid movies={allMovies.watchList} />
           </div>
         );
       default:

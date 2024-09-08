@@ -10,10 +10,11 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZmVlYWQ1NTMxYWYyMmZlM2I0MjQ2YWIzNjA3MmZkOCIsIm5iZiI6MTcyNTYwMzg1OC43MzEzMDcsInN1YiI6IjY2ZGE5ZDliMWZhN2Q4MmY0MDM0ZDM3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qU6sbyVJD16MSpeyb9AcrfzTQLpP1oEA_K6q0ZLCth4",
+    Authorization: "Bearer " + import.meta.env.VITE_TMDB_KEY,
   },
 };
+// constants/constants.js
+export const YOUTUBE_WATCH_URL = "https://www.youtube.com/watch?v=";
 
 export const SAMPLE_EMAIL = "pratik3@gmail.com";
 export const SAMPLE_PASSWORD = "Pra1234@";
@@ -26,3 +27,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "punjabi", name: "Punjabi" },
 ];
+
+export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
