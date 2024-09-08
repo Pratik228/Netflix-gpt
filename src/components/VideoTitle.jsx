@@ -22,7 +22,7 @@ const VideoTitle = ({ movie }) => {
     }
   };
   return (
-    <div className="w-full pt-[28%] px-24 text-white">
+    <div className="w-full pt-[25%] px-24 text-white">
       <h1 className="text-5xl font-bold max-w-xl">{movie.original_title}</h1>
       <p className="py-6 text-lg max-w-lg">{movie.overview}</p>
       <div className="flex space-x-4">
