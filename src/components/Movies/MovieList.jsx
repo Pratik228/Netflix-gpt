@@ -13,10 +13,12 @@ const MovieList = ({ title, movies, onAddToWatchList }) => {
       <div className="relative">
         <div className="flex overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth">
           <div className="flex pb-4 pt-2 sm:pb-8 sm:pt-4 space-x-2 sm:space-x-4">
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
               <div
                 key={movie.id}
-                className="w-[45vw] sm:w-auto sm:pr-2 flex-shrink-0 sm:flex-shrink transition-all duration-200 ease-in hover:scale-105 sm:hover:scale-125 hover:z-10"
+                className={`w-[45vw] sm:w-auto flex-shrink-0 sm:flex-shrink transition-all duration-200 ease-in hover:scale-105 sm:hover:scale-110 hover:z-10 ${
+                  index === 0 ? "sm:pl-4" : ""
+                }`}
               >
                 <EnhancedMovieCard
                   movie={movie}

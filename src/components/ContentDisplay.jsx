@@ -57,7 +57,7 @@ const ContentDisplay = ({ activeContent, onAddToWatchList }) => {
               <h2 className="text-3xl font-bold text-white mb-6">
                 Welcome to GPT Search
               </h2>
-              <GptSearch />
+              <GptSearch onAddToWatchList={onAddToWatchList} />
             </div>
           </div>
         );

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import MovieList from "../Movies/MovieList";
 
-const GptMovieSuggestions = () => {
+const GptMovieSuggestions = ({ onAddToWatchList }) => {
   const { movieResults, movieNames } = useSelector((store) => store.gpt);
   if (!movieNames) return null;
 
@@ -10,7 +10,11 @@ const GptMovieSuggestions = () => {
       <div className="mt-8 text-white">
         {movieNames.map((movieName, index) => (
           <div key={movieName} className="mb-8">
-            <MovieList title={movieName} movies={movieResults[index]} />
+            <MovieList
+              title={movieName}
+              movies={movieResults[index]}
+              onAddToWatchList={onAddToWatchList}
+            />
           </div>
         ))}
       </div>
