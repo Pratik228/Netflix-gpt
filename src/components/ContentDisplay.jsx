@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import MovieGrid from "./MovieGrid";
-import MainContainer from "./MainContainer";
-import SecondaryContainer from "./SecondaryContainer";
-import GptSearch from "./GptSearch";
+import MovieGrid from "./Movies/MovieGrid";
+import MainContainer from "./Movies/MainContainer";
+import SecondaryContainer from "./Movies/SecondaryContainer";
+import GptSearch from "./GPT/GptSearch";
 import { backgroundImage } from "../constants/constants";
 
-const ContentDisplay = ({ activeContent }) => {
+const ContentDisplay = ({ activeContent, onAddToWatchList }) => {
   const allMovies = useSelector((store) => store.movies);
 
   const renderContent = () => {
@@ -15,7 +15,7 @@ const ContentDisplay = ({ activeContent }) => {
           <div className="relative">
             <MainContainer />
             <div className="relative z-20 bg-black">
-              <SecondaryContainer />
+              <SecondaryContainer onAddToWatchList={onAddToWatchList} />
             </div>
           </div>
         );
@@ -25,14 +25,20 @@ const ContentDisplay = ({ activeContent }) => {
             <h2 className="text-3xl font-bold text-white mb-6">
               Top Rated TV Shows
             </h2>
-            <MovieGrid movies={allMovies.topRatedTv} />
+            <MovieGrid
+              movies={allMovies.topRatedTv}
+              onAddToWatchList={onAddToWatchList}
+            />
           </div>
         );
       case "movies":
         return (
           <div className="pt-32 px-8 bg-black min-h-screen">
             <h2 className="text-3xl font-bold text-white mb-6">Movies</h2>
-            <MovieGrid movies={allMovies.popularMovies} />
+            <MovieGrid
+              movies={allMovies.popularMovies}
+              onAddToWatchList={onAddToWatchList}
+            />
           </div>
         );
 
@@ -59,8 +65,11 @@ const ContentDisplay = ({ activeContent }) => {
       case "watchlist":
         return (
           <div className="pt-32 px-8 bg-black min-h-screen">
-            <h2 className="text-3xl font-bold text-white mb-6">Movies</h2>
-            <MovieGrid movies={allMovies.watchList} />
+            <h2 className="text-3xl font-bold text-white mb-6">Watch List</h2>
+            <MovieGrid
+              movies={allMovies.watchList}
+              onAddToWatchList={onAddToWatchList}
+            />
           </div>
         );
       default:

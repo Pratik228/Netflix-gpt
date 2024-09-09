@@ -1,7 +1,7 @@
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
 
-const SecondaryContainer = () => {
+const SecondaryContainer = ({ onAddToWatchList }) => {
   const allMovies = useSelector((store) => store.movies);
 
   if (!allMovies || !allMovies.nowPlayingMovies) {
@@ -15,14 +15,28 @@ const SecondaryContainer = () => {
           <MovieList
             title={"Now Playing"}
             movies={allMovies.nowPlayingMovies}
+            onAddToWatchList={onAddToWatchList}
           />
-          <MovieList title={"Popular"} movies={allMovies.popularMovies} />
-          <MovieList title={"Top Rated"} movies={allMovies.topRatedMovies} />
+          <MovieList
+            title={"Popular"}
+            movies={allMovies.popularMovies}
+            onAddToWatchList={onAddToWatchList}
+          />
+          <MovieList
+            title={"Top Rated"}
+            movies={allMovies.topRatedMovies}
+            onAddToWatchList={onAddToWatchList}
+          />
           <MovieList
             title={"Top Rated TV Shows"}
             movies={allMovies.topRatedTv}
+            onAddToWatchList={onAddToWatchList}
           />
-          <MovieList title={"Upcoming"} movies={allMovies.upcomingMovies} />
+          <MovieList
+            title={"Upcoming"}
+            movies={allMovies.upcomingMovies}
+            onAddToWatchList={onAddToWatchList}
+          />
         </div>
       </div>
     </div>

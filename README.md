@@ -41,6 +41,9 @@
 - Integrated openAI to the project to search movies and show us all
 - Added the wishlist and liked feature using Higher order component
 - Made responsive and added play button to play the trailer
+- Added toastify functionality to show user a message when they click on notification
+- Made it modular by arranging it into folders
+- Cleaned up the UI made it more mobile friendly
 
 # Features
 

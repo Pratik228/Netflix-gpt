@@ -2,18 +2,19 @@ import {
   CDN_URL,
   YOUTUBE_WATCH_URL,
   API_OPTIONS,
-} from "../constants/constants";
-import { addToWatchList, toggleLike } from "../utils/moviesSlice";
+} from "../../constants/constants";
+import { toggleLike } from "../../utils/moviesSlice";
 import { useDispatch } from "react-redux";
-import { FaPlay, FaPlus, FaThumbsUp, FaChevronDown } from "react-icons/fa";
+import { FaPlay, FaPlus, FaThumbsUp } from "react-icons/fa";
 import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
-const MovieGridItem = ({ movie }) => {
+const MovieGridItem = ({ movie, onAddToWatchList }) => {
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
 
   const handleAddToWatchList = () => {
-    dispatch(addToWatchList(movie));
+    onAddToWatchList(movie);
   };
 
   const handleLike = () => {

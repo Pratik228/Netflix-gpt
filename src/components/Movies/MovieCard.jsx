@@ -3,16 +3,16 @@ import {
   CDN_URL,
   YOUTUBE_WATCH_URL,
   API_OPTIONS,
-} from "../constants/constants";
-import { addToWatchList, toggleLike } from "../utils/moviesSlice";
+} from "../../constants/constants";
+import { addToWatchList, toggleLike } from "../../utils/moviesSlice";
 import { useDispatch } from "react-redux";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, onAddToWatchList }) => {
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
 
   const handleAddToWatchList = () => {
-    dispatch(addToWatchList(movie));
+    onAddToWatchList(movie);
   };
 
   const handleLike = () => {

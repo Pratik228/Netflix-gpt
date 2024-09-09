@@ -1,11 +1,11 @@
-import lang from "../constants/languageConstant";
+import lang from "../../constants/languageConstant";
 import { useSelector } from "react-redux";
 import { useRef, useState } from "react";
-import client from "../utils/openai";
-import { API_OPTIONS } from "../constants/constants";
-import { addGptMovieResult } from "../utils/gptSlice";
+import client from "../../utils/openai";
+import { API_OPTIONS } from "../../constants/constants";
+import { addGptMovieResult } from "../../utils/gptSlice";
 import { useDispatch } from "react-redux";
-import Shimmer from "./Shimmer";
+import Shimmer from "../Shimmer";
 
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);

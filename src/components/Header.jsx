@@ -198,6 +198,7 @@ const Header = ({ onNavChange }) => {
           </ul>
         </nav>
       )}
+      <div className="h-20 bg-transparent"></div>
     </header>
   );
 };
