@@ -35,7 +35,7 @@ const Browse = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black min-h-screen overflow-x-hidden">
       <ToastContainer />
       <Header onNavChange={setActiveContent} />
       <ContentDisplay
